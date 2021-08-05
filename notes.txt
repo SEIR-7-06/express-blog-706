@@ -1,0 +1,16 @@
+Steps to set up an Express Project from scratch
+- npm init - Create a package.json file for our project
+- npm install express
+- git init - Create a git repository
+- touch .gitignore
+- touch server.js
+
+Steps for cloning an existing Express Project
+- Clone down the repository
+- npm install - will install all of our dependancies
+- nodemon - Start our server
+
+
+Extra Notes
+- To kill all node processes run
+pkill node
