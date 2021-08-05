@@ -11,7 +11,7 @@ Steps for cloning an existing Express Project
 - nodemon - Start our server
 
 
-Steps to Create a new Page
+Steps to Create a Page
 1. Create a route for that page
 2. Create a template for that page
 3. Go get the data for that page
