@@ -11,6 +11,24 @@ Steps for cloning an existing Express Project
 - nodemon - Start our server
 
 
+Steps to Create a new Page
+1. Create a route for that page
+2. Create a template for that page
+3. Go get the data for that page
+4. Pass the data to the template
+
+
+Steps to send Data from a form to a server
+1. Configure Express to handle form data
+2. Set up the form to make a POST request
+3. Create a route to handle that POST request
+
+Setting up a controller
+1. Create router object
+2. Add routes to the router
+3. Export the router
+4. Direct requests to the controller for that router
+
 Extra Notes
 - To kill all node processes run
 pkill node

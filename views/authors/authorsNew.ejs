@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authors New</title>
+</head>
+<body>
+  <h1>Add an Author</h1>
+
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/authors">See all Authors</a></li>
+    </ul>
+  </nav>
+
+  <form action="/authors" method="POST">
+    <label for="name">Author Name: </label>
+    <input type="text" id="name">
+    <br />
+    <br />
+    <input type="submit" value="Create an Author">
+  </form>
+</body>
+</html>
