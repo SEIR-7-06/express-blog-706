@@ -18,19 +18,30 @@ Steps to Create a new Page
 4. Pass the data to the template
 
 
-Steps to send Data from a form to a server
+Steps to Add a new Document in the DB
 1. Configure Express to handle form data
 2. Set up the form to make a POST request
 3. Create a route to handle that POST request
+4. Made a query to create the document in the DB
+5. Redirect to the proper location
 
-Setting up a controller
+
+Steps to show all Documents on a Page
+1. Set up a index route
+2. Create a template to show the data
+3. Get all of the author data
+4. Pass the data to the template
+5. Iterate through the data and display it in the template
+
+
+Steps to Set up a controller
 1. Create router object
 2. Add routes to the router
 3. Export the router
 4. Direct requests to the controller for that router
 
 
-Set up mongoose
+Steps to Set Up Mongoose
 - Create the connection to the DB
 - Set up your models
 - Export the models

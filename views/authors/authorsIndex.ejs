@@ -16,6 +16,11 @@
     </ul>
   </nav>
 
-  
+  <ul>
+    <% for (let i = 0; i < allAuthors.length; i++) { %>
+      <li><%= allAuthors[i].authorName %></li>
+    <% } %>
+  </ul>
+
 </body>
 </html>

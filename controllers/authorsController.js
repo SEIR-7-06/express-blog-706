@@ -8,8 +8,13 @@ const router = express.Router();
 // Authors Index Route
 router.get('/', (req, res) => {
   // Go get the authors data
+  db.Author.find({}, (err, allAuthors) => {
+    if (err) return console.log(err);
 
-  res.render('authors/authorsIndex.ejs');
+    res.render('authors/authorsIndex.ejs', {
+      allAuthors: allAuthors
+    });
+  });
 });
 
 
