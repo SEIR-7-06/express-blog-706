@@ -11,7 +11,14 @@ app.set('view engine', 'ejs');
 /////////////////// Middleware /////////////////////////
 // Sits between the request and the rest of our routes
 // Add additional functionality to our app
+
+// Listen for form data and attach it to req.body
+app.use(express.urlencoded({ extended: false }));
+
+
+////////////////// Controllers /////////////////////////
 app.use('/authors', authorsController);
+
 
 /////////////////// Routes /////////////////////////////
 // Home Page Route

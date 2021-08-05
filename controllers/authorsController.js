@@ -1,5 +1,6 @@
 // Express Router
 const express = require('express');
+const db = require('../models/index.js');
 const router = express.Router();
 
 // Base path - /authors
@@ -24,7 +25,16 @@ router.get('/new', (req, res) => {
 // - Create a route for a POST request to localhost:4000/authors
 // - Have the route res.send a helpful string!
 router.post('/', (req, res) => {
-  res.send('Helpful string!');
+  // console.log(req.body);
+
+  // Add the new author to the DB
+  db.Author.create(req.body, (err, createdAuthor) => {
+    if (err) return console.log(err);
+
+    console.log(createdAuthor);
+
+    res.redirect('/authors');
+  });
 })
 
 module.exports = router;

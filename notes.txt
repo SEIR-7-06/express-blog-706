@@ -29,6 +29,13 @@ Setting up a controller
 3. Export the router
 4. Direct requests to the controller for that router
 
+
+Set up mongoose
+- Create the connection to the DB
+- Set up your models
+- Export the models
+- Create/Read/Update/Delete documents using our Model
+
 Extra Notes
 - To kill all node processes run
 pkill node
