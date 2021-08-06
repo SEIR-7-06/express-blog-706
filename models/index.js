@@ -16,6 +16,8 @@ mongoose.connection.on('connected', () => {
 });
 
 // Making the Author model available from this file
+// Making the Article model available from this file
 module.exports = {
-  Author: require('./Author.js')
+  Author: require('./Author.js'),
+  Article: require('./Article.js')
 }

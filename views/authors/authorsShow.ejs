@@ -2,22 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<link rel="stylesheet" href="/style.css">
+		<title>New Author Page</title>
 	</head>
 	<body>
-		<header>
-			<h1>Show Page for <%= author.name %></h1>
-			<nav>
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="/authors">Author Index</a>
-					</li>
-				</ul>
-			</nav>
-		</header>
+		<%- include('../partials/navbar.ejs') %>
+
+		<h1>Show Page for <%= author.name %></h1>
 		<main>
 			<section>
 				<h2>Author Attributes:</h2>

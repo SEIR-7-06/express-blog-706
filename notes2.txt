@@ -1,0 +1,69 @@
+Gameplan:
+    * EJS Partials - to have a NavBar easily included in 
+    in every page
+    * Include CSS files, using "static" or "public" folder
+    * Article resource
+
+EJS Partials:
+    * Make a "partials" folder inside of the "views" folder
+    * Write the html in that .ejs file
+    * <%- include('../path/to/the/file ') %>
+
+EJS:
+    <% is for executing javascript code 
+    <%= is for inserting text into the HTML
+    <%- is for inserting partials w/ includes()
+
+💪 You do:
+Add the navbar to the Authors Show page, and the New page
+
+Public Folder:
+    * To serve "static" files (CSS, images, and client-side javascript) add to server.js:
+        - app.use(express.static('public'))
+    * Create a "public" folder in your project
+    * Link to the CSS from your views
+        - <link rel="stylesheet" href="/style.css">
+
+
+----------------
+Adding another resource to our App (Articles)
+- Set the Model
+    - Define the Schema (shape of the data)
+    (Blueprint)
+    - Create the model (It's how mongoose creates Documents in
+    the database collection)
+    (Contract)
+    - Export the model - we can use the Model everywhere else
+    in our code.
+    - Make the model available in index.js, so that it can be 
+    available via require('./models') folder
+
+💪 You Do:
+1. Make a Article.js model
+2. title, String required, body String
+
+- Set up the Controller
+    - Make a controller file
+    - Set up the express.Router() - which allows us to add routes
+    to our app
+    - module.exports the router
+    - Import the database
+    - "mount" the controller to server.js
+    - Implement the 7 RESTful routes
+
+💪 You Do:
+1. Set up a controller file using the steps detailed above ^
+Skip the step for implementing the 7 RESTful routes
+
+HTTP Verb
+GET     /articles           index
+GET     /articles/new       new
+POST    /articles           create
+GET     /articles/:id       show
+GET     /articles/:id/edit  edit
+PUT     /articles/:id       update
+DELETE  /articles/:id       delete
+
+Function stubbing is making placeholder functions
+
+- Set up the Views
