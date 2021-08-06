@@ -1,5 +1,6 @@
 /////////////////// Require Statements /////////////////
 const express = require('express');
+const methodOverride = require('method-override');
 const authorsController = require('./controllers/authorsController.js');
 
 /////////////////// Configuration //////////////////////
@@ -10,9 +11,10 @@ app.set('view engine', 'ejs');
 
 /////////////////// Middleware /////////////////////////
 // Sits between the request and the rest of our routes
-// Add additional functionality to our app
+// Adds additional functionality to our app
 
 // Listen for form data and attach it to req.body
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
 
 
@@ -32,7 +34,7 @@ app.get('/', (req, res) => {
 //   res.send('You hit the /test route!')
 // })
 
-/////////////////// Start the Server
+/////////////////// Start the Server ///////////////////
 // Start our Server
 app.listen(PORT, () => {
   console.log(`Your server is running on localhost:${PORT} 🚀`);

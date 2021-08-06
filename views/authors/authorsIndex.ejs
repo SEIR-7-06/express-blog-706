@@ -18,9 +18,13 @@
 
   <ul>
     <% for (let i = 0; i < allAuthors.length; i++) { %>
-      <li><%= allAuthors[i].authorName %></li>
+        <li>
+            <a href="/authors/<%= allAuthors[i]._id %>">
+              <%= allAuthors[i].authorName %>
+            </a>
+        </li>
     <% } %>
-  </ul>
+</ul>
 
 </body>
 </html>
