@@ -10,5 +10,16 @@
 <body>
     <%- include('../partials/navbar.ejs') %>
     <h1>All the Articles</h1>
+    <a href="/articles/new">Add an Article</a>
+
+    <ul>
+        <% for (let i = 0; i < allArticles.length; i++) { %>
+            <li>
+                <a href="/articles/<%= allArticles[i]._id %>">
+                    <%= allArticles[i].title %>
+                </a>
+            </li>
+        <% } %>
+    </ul>
 </body>
 </html>
