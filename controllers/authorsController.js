@@ -27,11 +27,16 @@ router.get('/new', (req, res) => {
 
 // Authors Show Route - Show a single Author
 router.get('/:id', (req, res) => {
-	db.Author.findById(req.params.id, (err, foundAuthor) => {
-		if (err) return console.log(err);
+  // Use the populate method to populate the actual article data
+  db.Author.findById(req.params.id) // Find a particular by it's id
+    .populate('articles') // Populate the article field with actual article data
+    .exec((err, foundAuthor) => { // Execute our callback function
+      if (err) return console.log(err);
 
-		res.render('authors/authorsShow.ejs', { author: foundAuthor });
-	});
+      console.log(foundAuthor);
+
+      res.render('authors/authorsShow.ejs', { author: foundAuthor });
+    })
 });
 
 

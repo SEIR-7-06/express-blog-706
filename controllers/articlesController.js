@@ -33,23 +33,27 @@ router.get('/new', (req, res) => {
 
 // Create route - Handles submitting the form and will create a new article
 router.post('/', (req, res) => {
-    // ✅️ 1. Check that the data is in req.body - check that express.urlencoded
-    // middleware is setup
-    console.log(req.body)
-    // ✅️ 2. Create a new 'document' in the 'article' collection
-    // needs to have "title" and "content" as keys
-    // ✅️ 3. Redirect to /articles
     let data = {
         title: req.body.title,
         content: req.body.content,
         author: req.body.author
     }
+
     db.Article.create(data, (err, createdArticle) => {
         if(err) return console.log(err)
 
-        console.log(createdArticle);
+        // Add the article Id to the author that created it
+        db.Author.findByIdAndUpdate(
+            createdArticle.author, // the id of the author we want to update
+            { $push: { articles: createdArticle } }, // push the createdArticle into the author's articles array
+            (err, updatedAuthor) => {
+                if (err) return console.log(err);
 
-        res.redirect('/articles')
+                console.log(updatedAuthor);
+
+                res.redirect('/articles'); // Redirect back to articles index page
+            }
+        )
     })
     // res.send('Youve created an Article!')
 })
