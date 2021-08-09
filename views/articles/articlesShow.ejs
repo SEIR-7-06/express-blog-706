@@ -12,6 +12,12 @@
     
     <h1>Article Show Page</h1>
     <h2><%= article.title %></h2>
+
+    <!-- Convert this to a link that will take us to the author show page -->
+    <a href="/authors/<%= article.author._id %>">
+        <p><%= article.author.authorName %></p>
+    </a>
+
     <p><%= article.content %></p>
 
     <a href="/articles/<%= article._id %>/edit">Edit this Article</a>

@@ -115,6 +115,7 @@ const article2 = {
 
 //////////////////////////////////////////////////////////////////////////
 // Referenced Data
+// We are referencing the article ids directly in the author object
 
 const author1 = {
   _id: '20dk1dk103kfslf1540',

@@ -21,15 +21,17 @@ router.get('/', (req, res) => {
 
 // New route - Sends a form
 router.get('/new', (req, res) => {
-    // ✅️ 1. Create a route for that page
-    // ✅️ 2. Create a template for that page
-    // ✅️ 3: res.render(the template)
-    // res.render STARTS by looking in the 'views'
-    // ✅️ 4: Create a form that matches the Article Schema
-    res.render('articles/articlesNew.ejs')
+    // 1. Make a query to get all the author data
+    db.Author.find({}, (err, allAuthors) => {
+
+
+        // 2. pass that data to the template
+        res.render('articles/articlesNew.ejs', { allAuthors: allAuthors });
+    })
+    // 3. Update the template to have a select box for the authors
 })
 
-// Create route
+// Create route - Handles submitting the form and will create a new article
 router.post('/', (req, res) => {
     // ✅️ 1. Check that the data is in req.body - check that express.urlencoded
     // middleware is setup
@@ -39,10 +41,14 @@ router.post('/', (req, res) => {
     // ✅️ 3. Redirect to /articles
     let data = {
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        author: req.body.author
     }
     db.Article.create(data, (err, createdArticle) => {
         if(err) return console.log(err)
+
+        console.log(createdArticle);
+
         res.redirect('/articles')
     })
     // res.send('Youve created an Article!')
@@ -51,16 +57,17 @@ router.post('/', (req, res) => {
 // Show route
 router.get('/:id', (req, res) => {
     console.log(req.params.id)
-    // ✅️ 1. Find the article by it's id
-    db.Article.findById(req.params.id, (err, foundArticle) => {
-        if(err) return console.log(err)
-        // console.log(foundArticle)
-        // ✅️ 2. Pass the data to an ejs template (articlesShow.ejs)
-        // ✅️ 3. res.render() that page
-        res.render('articles/articlesShow', {
-            article: foundArticle
+
+    // Find an Article by it's Id and populate the author field
+    db.Article.findById(req.params.id) // Getting an article by it's Id
+        .populate('author') // Populating that found article with actual author data
+        .exec((err, foundArticle) => { // Execute our callback function
+            console.log(foundArticle)
+
+            res.render('articles/articlesShow', {
+                article: foundArticle
+            })
         })
-    })
 
 })
 

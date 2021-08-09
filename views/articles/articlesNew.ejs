@@ -17,6 +17,14 @@
     <%- include('../partials/navbar.ejs') %>
     <h1>Add a new Article</h1>
     <form method="POST" action="/articles">
+        <label for="author">Select an Author:</label>
+        <select name="author" id="author">
+            <% for (let i = 0; i < allAuthors.length; i++) { %>
+                <option value="<%= allAuthors[i]._id %>"><%= allAuthors[i].authorName %></option>
+            <% } %>
+        </select>
+        <br>
+
         <label for="title">Title of Article:</label>
         <input type="text" name="title">
         <br>
