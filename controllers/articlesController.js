@@ -31,9 +31,9 @@ router.get('/new', (req, res) => {
 
 // Create route
 router.post('/', (req, res) => {
-    // ✅️ 1. Check that the data is in req.body 
+    // 🚫 1. Check that the data is in req.body 
     // console.log(req.body)
-    // ✅️ 2. Create a new 'document' in the 'article' collection
+    // 🚫 2. Create a new 'document' in the 'article' collection
     res.send('Youve created an Article!')
 })
 
@@ -71,16 +71,16 @@ router.get('/:id/edit', (req, res) => {
 
 // Update route
 router.put('/:id', (req, res) => {
-    // ✅️ 1. Use the data that came in from the form in req.body to
+    // 🚫 1. Use the data that came in from the form in req.body to
     // update the article specified in req.params.id
-    // ✅️ 2. Redirect to /articles
+    // 🚫 2. Redirect to /articles
     res.send('SUB: Youve updated the article!')
 })
 
 router.delete('/:id', (req, res) => {
-    // ✅️ 1. Delete the article specified by req.params.id
+    // 🚫 1. Delete the article specified by req.params.id
     // - findByIdAndDelete
-    // ✅️ 2. res.redirect to /articles
+    // 🚫 2. res.redirect to /articles
     res.send('STUB: Youve deleted the Article!')
 })
 
