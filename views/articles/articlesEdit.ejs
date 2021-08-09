@@ -15,7 +15,16 @@
     <hr>
 
     <!-- TODO: Create the form that PUTs to /articles/:id -->
-    <form method="" action="">
+    <!-- Need to have inputs for "title" and "content" -->
+    <form method="POST" action="/articles/<%= article._id %>?_method=PUT">
+        <label for="title">New Title:</label>
+        <input name="title" type="text"> 
+        <!-- req.body.title -->
+        <br>
+        <label for="content">New Content:</label>
+        <input name="content" type="text">
+        <!-- req.body.content -->
+        <br>
         <input type="submit">
     </form>
 </body>

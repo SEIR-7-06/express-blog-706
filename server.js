@@ -16,6 +16,8 @@ app.set('view engine', 'ejs');
 // Sits between the request and the rest of our routes
 // Adds additional functionality to our app
 
+// Listens for POST requests with a _method= in the URL
+// then converts the VERB to PUT or DELETE
 app.use(methodOverride('_method'));
 // Listen for form data and attach it to req.body
 app.use(express.urlencoded({ extended: false }));
