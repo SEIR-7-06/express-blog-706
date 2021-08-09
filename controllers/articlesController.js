@@ -32,21 +32,9 @@ router.get('/new', (req, res) => {
 // Create route
 router.post('/', (req, res) => {
     // ✅️ 1. Check that the data is in req.body 
-    console.log(req.body)
+    // console.log(req.body)
     // ✅️ 2. Create a new 'document' in the 'article' collection
-    let data = {
-        title: req.body.title,
-        content: req.body.content
-    }
-    db.Article.create(data, (err) => {
-        // Callback function is ran when the response comes back after
-        // waiting for the database to respond
-        if(err) {
-            return console.log("An error has occurred", err)
-        }
-        // ✅️ 3. Redirect back to index page on successful completion
-        res.redirect('/articles')
-    })
+    res.send('Youve created an Article!')
 })
 
 // Show route
@@ -86,22 +74,14 @@ router.put('/:id', (req, res) => {
     // ✅️ 1. Use the data that came in from the form in req.body to
     // update the article specified in req.params.id
     // ✅️ 2. Redirect to /articles
-    console.log('hi')
-    db.Article.findByIdAndUpdate(req.params.id, req.body, (err) => {
-            if(err) return console.log(err)
-            res.redirect('/articles')
-        }
-    )
+    res.send('SUB: Youve updated the article!')
 })
 
 router.delete('/:id', (req, res) => {
     // ✅️ 1. Delete the article specified by req.params.id
     // - findByIdAndDelete
     // ✅️ 2. res.redirect to /articles
-    db.Article.findByIdAndDelete(req.params.id, (err) => {
-        if(err) return console.log(err)
-        res.redirect('/articles')
-    })    
+    res.send('STUB: Youve deleted the Article!')
 })
 
 module.exports = router;
