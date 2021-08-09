@@ -59,7 +59,7 @@ router.get('/:id/edit', (req, res) => {
     // db.findById(req.params.id, (err, foundArticle) => { 
     // ✅️ 2. Pass the data to the edit page so you can display the current
     // data 
-    // ✅️ 3. Create a form that does a PUT to /articles/:id
+    // 🚫 3. Create a form that does a PUT to /articles/:id
     // ✅️ 4. res.render the edit page template
     db.Article.findById(req.params.id, (err, foundArticle) => {
         if(err) return console.log(err);
