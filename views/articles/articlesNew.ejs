@@ -1,0 +1,29 @@
+<!-- ✅️ 1. Make the HTML skeleton -->
+<!-- ✅️ 2. Put in the navbar -->
+<!-- ✅️ 3. Add the form: --> 
+<!-- We want 1 input per Schema "field", and we want the names -->
+<!-- to match up w/ the Schema. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>New Article</title>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <h1>Add a new Article</h1>
+    <form method="POST" action="/articles">
+        <label for="title">Title of Article:</label>
+        <input type="text" name="title">
+        <br>
+        <label for="content">Article Content:</label>
+        <input type="text" name="content">
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>

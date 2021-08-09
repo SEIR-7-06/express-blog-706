@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Article Edit Page</title>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <h1>Edit page for "<%= article.title %>"</h1>
+    <p><%= article.content %></p>
+
+    <hr>
+
+    <form method="POST" action="/articles/<%= article._id %>?_method=PUT">
+        <label for="title">New Title of Article:</label>
+        <input type="text" name="title">
+        <br>
+        <label for="content">New Article Content:</label>
+        <input type="text" name="content">
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>

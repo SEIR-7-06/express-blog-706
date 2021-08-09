@@ -4,36 +4,104 @@ const db = require('../models/index.js')
 
 // Index route
 router.get('/', (req, res) => {
-    res.send('STUB: Heres all of the articles you requested!')
+    // ✅️ 1. Set up a index route
+    // ✅️ 2. Create a template to show the data
+    // 3. Get all of the article data
+    db.Article.find({}, (err, allArticles) => {
+        if(err) return console.log(err)
+        // console.log(allArticles)
+        // ✅️ 4. Pass the data to the template
+        // ✅️ 5. Iterate through the data and display it in the template
+        // ✅️ 6. res.render(the template)
+        res.render('articles/articlesIndex.ejs', {
+            allArticles: allArticles
+        })
+    })
 })
 
 // New route - Sends a form
 router.get('/new', (req, res) => {
-    res.send('STUB: Heres the form for making a new article!')
+    // ✅️ 1. Create a route for that page
+    // ✅️ 2. Create a template for that page
+    // ✅️ 3: res.render(the template)
+    // res.render STARTS by looking in the 'views'
+    // ✅️ 4: Create a form that matches the Article Schema
+    res.render('articles/articlesNew.ejs')
 })
 
 // Create route
 router.post('/', (req, res) => {
-    res.send('STUB: Article has been created! Thanks!')
+    // ✅️ 1. Check that the data is in req.body 
+    console.log(req.body)
+    // ✅️ 2. Create a new 'document' in the 'article' collection
+    let data = {
+        title: req.body.title,
+        content: req.body.content
+    }
+    db.Article.create(data, (err) => {
+        // Callback function is ran when the response comes back after
+        // waiting for the database to respond
+        if(err) {
+            return console.log("An error has occurred", err)
+        }
+        // ✅️ 3. Redirect back to index page on successful completion
+        res.redirect('/articles')
+    })
 })
 
 // Show route
 router.get('/:id', (req, res) => {
-    res.send('STUB: Heres is the individual article you requested!')
+    console.log(req.params.id)
+    // ✅️ 1. Find the article by it's id
+    db.Article.findById(req.params.id, (err, foundArticle) => {
+        if(err) return console.log(err)
+        // console.log(foundArticle)
+        // ✅️ 2. Pass the data to an ejs template (articlesShow.ejs)
+        // ✅️ 3. res.render() that page
+        res.render('articles/articlesShow', {
+            article: foundArticle
+        })
+    })
+
 })
 
 // Edit route
 router.get('/:id/edit', (req, res) => {
-    res.send('STUB: Here is the form for editing that article!')
+    // ✅️ 1. Find the article specified by req.params.id
+    // db.findById(req.params.id, (err, foundArticle) => { 
+    // ✅️ 2. Pass the data to the edit page so you can display the current
+    // data 
+    // ✅️ 3. Create a form that does a PUT to /articles/:id
+    // ✅️ 4. res.render the edit page template
+    db.Article.findById(req.params.id, (err, foundArticle) => {
+        if(err) return console.log(err);
+        res.render('articles/articlesEdit', {
+            article: foundArticle
+        })
+    })
 })
 
 // Update route
 router.put('/:id', (req, res) => {
-    res.send('STUB: Article has been updated, thanks!')
+    // ✅️ 1. Use the data that came in from the form in req.body to
+    // update the article specified in req.params.id
+    // ✅️ 2. Redirect to /articles
+    console.log('hi')
+    db.Article.findByIdAndUpdate(req.params.id, req.body, (err) => {
+            if(err) return console.log(err)
+            res.redirect('/articles')
+        }
+    )
 })
 
 router.delete('/:id', (req, res) => {
-    res.send('STUB: Article has been deleted!')
+    // ✅️ 1. Delete the article specified by req.params.id
+    // - findByIdAndDelete
+    // ✅️ 2. res.redirect to /articles
+    db.Article.findByIdAndDelete(req.params.id, (err) => {
+        if(err) return console.log(err)
+        res.redirect('/articles')
+    })    
 })
 
 module.exports = router;
